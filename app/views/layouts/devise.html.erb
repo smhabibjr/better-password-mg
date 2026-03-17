@@ -26,11 +26,7 @@
   <body>
   <div class="vh-100">
     <div class="h-100 container d-flex flex-column justify-content-center align-items-center">
-    <%= link_to(root_path, class: "navbar-brand") do %>
-      <h2>
-      <i class="bi bi-safe-fill"></i> <span class="fs-4">BetterPass</span>
-      </h2>
-      <% end %>
+    <%= logo %>
         <div class="card card--auth shadow-sm w-100">
                 <div class="card-body">
                     <%= yield %>
