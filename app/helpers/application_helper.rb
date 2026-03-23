@@ -4,4 +4,8 @@ module ApplicationHelper
           "<i class=\"bi bi-safe-fill me-2\"></i> BatterPass".html_safe
         end
       end
+
+      def account_page?
+        current_page?(edit_user_registration_path)
+      end
 end
