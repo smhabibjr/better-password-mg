@@ -9,6 +9,10 @@ class EntriesController < ApplicationController
     @entry = Entry.new
   end
 
+  def show
+    @entry = current_user.entries.find(params[:id])
+  end
+
   def create
     #current_user is come from devise, it gives us the currently logged in user, and we build a new entry associated with that user using the entry_params from the form. If the entry saves successfully, we redirect to the entries index page with a success notice. If it fails to save (e.g., due to validation errors), we render the new entry form again so the user can correct any issues.
     @entry = current_user.entries.new(entry_params)
