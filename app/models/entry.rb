@@ -3,6 +3,9 @@ class Entry < ApplicationRecord
   validates :name, :url, :username, :password, presence: true
   validate :url_must_be_valid
 
+  encrypts :username, deterministic: true
+  encrypts :password
+  
   private
   
   def url_must_be_valid
