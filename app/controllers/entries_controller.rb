@@ -3,6 +3,7 @@ class EntriesController < ApplicationController
 
   def index
     @entries = current_user.entries
+    @main_entry = current_user.entries.first
   end
 
   def new
