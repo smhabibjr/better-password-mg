@@ -1,0 +1,8 @@
+<h1>Sellers</h1>
+<ul>
+  <% if @sellers.any? %>
+    <% @sellers.each do |seller| %>
+      <li><%= link_to seller[:name], seller_path(seller[:name]) %></li>
+    <% end %>
+  <% end %>
+</ul>

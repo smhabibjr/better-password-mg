@@ -1,0 +1,15 @@
+<turbo-frame id="seller_detail">
+<% if @seller %>
+    <div class="card">
+      <div class="card-header">
+        <strong><%= @seller[:name] %></strong>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Location: <%= @seller[:location] %></li>
+        <li class="list-group-item">Rating: <%= @seller[:rating] %></li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="alert alert-warning">Seller not found.</div>
+  <% end %>
+</turbo-frame>

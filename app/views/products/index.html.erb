@@ -1,0 +1,61 @@
+<div class="d-flex gap-3 p-3">
+
+  <%# ── SIDEBAR ── %>
+  <div class="border rounded p-3" style="width: 220px; flex-shrink: 0;">
+    <h6 class="mb-3">Products</h6>
+    <ul class="list-unstyled mb-0">
+      <% @products.each_with_index do |product, index| %>
+        <li class="mb-2">
+          <%#
+            KEY CONCEPT:
+            data-turbo-frame tells this link to load its response
+            INTO the turbo-frame with id="product_detail" instead of
+            doing a full page navigation.
+          %>
+          <%= link_to product[:name], product_path(index),
+                data: { turbo_frame: "product_detail" },
+                class: "text-decoration-none" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%# ── DETAIL PANEL ── %>
+  <div class="flex-grow-1">
+    <%#
+      KEY CONCEPT:
+      This is the Turbo Frame "target". It has a unique id.
+      When a link targeting this frame is clicked, Rails will:
+        1. Fetch the linked URL (products/:id)
+        2. Find the <turbo-frame id="product_detail"> in that response
+        3. Swap only that frame's content here — no full reload
+    %>
+    <turbo-frame id="product_detail">
+      <div class="card">
+        <div class="card-body text-muted">
+          Select a product from the list to see details.
+        </div>
+      </div>
+    </turbo-frame>
+  </div>
+
+   <%# ── SELLER PANEL ── %>
+  <div class="flex-grow-1">
+    <%#
+      KEY CONCEPT:
+      This is the Turbo Frame "target". It has a unique id.
+      When a link targeting this frame is clicked, Rails will:
+        1. Fetch the linked URL (products/:id)
+        2. Find the <turbo-frame id="product_detail"> in that response
+        3. Swap only that frame's content here — no full reload
+    %>
+    <turbo-frame id="seller_detail">
+      <div class="card">
+        <div class="card-body text-muted">
+          Select a seller from product details to see more about them.
+        </div>
+      </div>
+    </turbo-frame>
+  </div>
+
+</div>
