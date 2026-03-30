@@ -8,8 +8,11 @@
       </div>
       
       <div class="entries-card__main">
-        <%= render(partial: 'entries/main', locals: {entry: @main_entry}) %>
+        <%= turbo_frame_tag('main-dashboard') do %>
+          <%= render(partial: 'entries/main', locals: {entry: @main_entry}) %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
