@@ -1,4 +1,8 @@
 <div class="row">
+  <div class="entries-actions card">
+    <div></div>
+    <%= link_to('+ New Entry', new_entry_path, class: 'btn btn-primary', data: {turbo_frame: 'main-dashboard'}) %>
+  </div>
   <div id="dashboard" class="card shadow-sm">
     <div class="entries-card">
       <div class="entries-card__sidebar">

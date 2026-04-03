@@ -1,4 +1,8 @@
-<h1>New Entry</h1>
+<%= turbo_frame_tag('main-dashboard') do %>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1>New Entry</h1>
+  <%= link_to('Cancel', entries_path, class: 'btn btn-sm btn-outline-danger') %>
+</div>
 <div class="row">
   <div class="col">
     <div class="card">
@@ -38,3 +42,4 @@
     </div>
   </div>
 </div>
+<% end %>
