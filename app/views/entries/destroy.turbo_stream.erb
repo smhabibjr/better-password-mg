@@ -1,0 +1,11 @@
+<%= render_flash_stream %>
+<%= turbo_stream.remove(dom_id(@entry)) %>
+<% if current_user.entries.any? %>
+  <%= turbo_stream.update('main-dashboard') do %>
+    <%= render(partial: 'entries/main', locals: {entry: current_user.entries.first}) %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.update('main-dashboard') do %>
+    <%= render(html: content_tag(:h1, 'No Entries', class: 'h-100 d-flex align-items-center justify-content-center')) %>
+  <% end %>
+<% end %>
