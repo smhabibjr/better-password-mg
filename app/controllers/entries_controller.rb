@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_entry, only: [:show, :destroy]
+  before_action :set_entry, only: [:show, :destroy, :edit] # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
 
   def index
     @entries = current_user.entries
@@ -15,7 +15,7 @@ class EntriesController < ApplicationController
   end
 
   def create
-    #current_user is come from devise, it gives us the currently logged in user, and we build a new entry associated with that user using the entry_params from the form. If the entry saves successfully, we redirect to the entries index page with a success notice. If it fails to save (e.g., due to validation errors), we render the new entry form again so the user can correct any issues.
+    # current_user is come from devise, it gives us the currently logged in user, and we build a new entry associated with that user using the entry_params from the form. If the entry saves successfully, we redirect to the entries index page with a success notice. If it fails to save (e.g., due to validation errors), we render the new entry form again so the user can correct any issues.
     @entry = current_user.entries.new(entry_params)
     if @entry.save
         flash.now[:notice] = "<strong>#{@entry.name}</strong> Entry created successfully.".html_safe
@@ -27,6 +27,9 @@ class EntriesController < ApplicationController
       flash.now[:alert] = "Failed to create entry."
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
   end
 
   def destroy
