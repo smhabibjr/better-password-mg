@@ -1,10 +1,10 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_entry, only: [:show, :destroy, :edit] # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
+  before_action :set_entry, only: [:show, :destroy, :update, :edit] # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
 
   def index
-    @entries = current_user.entries
-    @main_entry = current_user.entries.first
+    @entries = current_user.entries.order(:name)
+    @main_entry = current_user.entries.order(:name).first
   end
 
   def new
@@ -30,6 +30,19 @@ class EntriesController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @entry.update(entry_params)
+      flash.now[:notice] = "<strong>#{@entry.name}</strong> Entry updated successfully.".html_safe
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.turbo_stream
+      end
+    else
+      flash.now[:alert] = "Failed to update entry."
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
