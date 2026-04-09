@@ -67,5 +67,14 @@
       align-items: center;
       padding: 1rem 1.5rem;
     }
+    .entry-search {
+      width: 24%;
+
+      .entry-search-button {
+        position: absolute;
+        right: 0.50rem;
+        top: 0.65rem;
+      }
+    }
   }
 }

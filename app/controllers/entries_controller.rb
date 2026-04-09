@@ -3,8 +3,8 @@ class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :destroy, :update, :edit] # rubocop:disable Layout/SpaceInsideArrayLiteralBrackets
 
   def index
-    @entries = current_user.entries.order(:name)
-    @main_entry = current_user.entries.order(:name).first
+    @entries = current_user.entries.search(params[:name])
+    @main_entry = @entries.first
   end
 
   def new
