@@ -33,7 +33,15 @@
                 <%= text_field_tag(:username, entry.username, readonly: true, class: 'form-control-plaintext', placeholder: 'email') %>
                 <%= label_tag(:username, "Username", class: 'fw-bold text-dark') %>
               </div>
-              <div class="actions">
+              <div class="actions d-flex">
+                <button
+                  class="btn btn-outline-primary border-0"
+                  data-controller="clipboard"
+                  data-action="click->clipboard#copy"
+                  data-clipboard-content-param="<%= entry.username %>"
+                >
+                  <i class="bi bi-clipboard-plus"></i>
+                </button>
                 <%= link_to(edit_entry_path(entry, input: :entry_username), class: 'btn btn-outline-light border-0 text-dark') do %>
                   <i class="bi bi-pencil-square"></i>
                 <% end %>
@@ -48,7 +56,15 @@
                 <%= text_field_tag(:password, entry.password, readonly: true, class: 'form-control-plaintext', type: :password, placeholder: 'password') %>
                 <%= label_tag(:password, "Password", class: 'fw-bold text-dark') %>
               </div>
-              <div class="actions">
+              <div class="actions d-flex">
+                <button
+                  class="btn btn-outline-primary border-0"
+                  data-controller="clipboard"
+                  data-action="click->clipboard#copy"
+                  data-clipboard-content-param="<%= entry.password %>"
+                >
+                  <i class="bi bi-clipboard-plus"></i>
+                </button>
                 <%= link_to(edit_entry_path(entry, input: :entry_password), class: 'btn btn-outline-light border-0 text-dark') do %>
                   <i class="bi bi-pencil-square"></i>
                 <% end %>
