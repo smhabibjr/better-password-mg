@@ -13,7 +13,7 @@ class ClipboardController extends Controller {
       this.element.innerHTML = checkIcon;
       setTimeout(() => {
         this.element.innerHTML = clipboardIcon;
-      }, 3000);
+      }, 2000);
       toast?.show()
     } catch (error) {
       toast?.show()
